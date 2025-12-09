@@ -1,0 +1,16 @@
+.env
+.venv
+.git
+.gitignore
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist
+build
+output/*.json
+README.md
