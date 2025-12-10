@@ -16,4 +16,4 @@ COPY . .
 RUN mkdir -p output/error_images
 
 # Run the web service (which runs scraper in background)
-CMD ["python", "web_service.py"]
+CMD ["python", "main.py"]
