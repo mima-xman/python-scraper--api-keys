@@ -72,6 +72,7 @@ class MongoDBManager:
                 "password": account.get("password"),
                 "api_key": account.get("api_key"),
                 "scraped_at": account.get("scraped_at"),
+                "scraped_by": None,
                 "in_use": False,
                 "locked_at": None,
                 "used_by": None,
