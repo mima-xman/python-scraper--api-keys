@@ -19,6 +19,15 @@ MONGODB_URL = os.getenv("MONGODB_URL", "mongodb://localhost:27017")
 MONGODB_DATABASE = os.getenv("MONGODB_DATABASE", "bytez_keys_manager")
 MONGODB_COLLECTION = "api_keys"
 
+# ==================== SCRAPER CONFIGURATION ====================
+
+# Scraper name - used to identify this scraper instance
+SCRAPER_NAME = os.getenv("SCRAPER_NAME", "bytez_api_keys_scraper")
+
+# Optional: Scraper ID to reuse an existing scraper
+# If not provided or scraper doesn't exist, a new one will be created
+SCRAPER_ID = os.getenv("SCRAPER_ID", None)
+
 # ==================== TOR Configuration ====================
 
 USE_TOR = False  # Set to False to disable TOR

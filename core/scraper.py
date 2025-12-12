@@ -55,9 +55,11 @@ class BytezAPIKeyScraper:
         # Initialize MongoDB manager
         try:
             self.db_manager = MongoDBManager()
+            # Initialize scraper and get scraper_id
+            self.scraper_id = self.db_manager.get_or_create_scraper()
         except Exception as e:
             print(f"\n{'=' * 60}")
-            print(f"CRITICAL ERROR: Failed to connect to MongoDB")
+            print(f"CRITICAL ERROR: Failed to connect to MongoDB or initialize scraper")
             print(f"Error: {str(e)}")
             print(f"{'=' * 60}")
             raise
@@ -194,8 +196,7 @@ class BytezAPIKeyScraper:
         return {
             "email": email,
             "password": password,
-            "api_key": api_key,
-            "scraped_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            "api_key": api_key
         }
 
     def save_api_key_to_db(self, account: Dict[str, str]):
@@ -204,13 +205,13 @@ class BytezAPIKeyScraper:
         CRITICAL: If save fails, raises exception to stop the scraper.
 
         Args:
-            account: Dictionary containing email, password, api_key, and scraped_at
+            account: Dictionary containing email, password, and api_key
             
         Raises:
             Exception: If MongoDB save operation fails
         """
         try:
-            success = self.db_manager.save_api_key(account)
+            success = self.db_manager.save_api_key(account, self.scraper_id)
             if not success:
                 raise Exception("MongoDB save operation returned False")
         except Exception as e:
