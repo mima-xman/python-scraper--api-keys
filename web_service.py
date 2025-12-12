@@ -108,7 +108,7 @@ if __name__ == '__main__':
     print("=" * 60)
     
     # Get port from environment (Render provides this)
-    port = int(os.environ.get('PORT', 10000))
+    port = int(os.environ.get('PORT', 8000))
     print(f"Port: {port}")
     
     # Check environment variables
